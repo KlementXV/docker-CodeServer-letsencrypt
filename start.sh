@@ -57,18 +57,18 @@ Certificate=$cert_path$domain_name
 
 # NETWORK
 read -p "Network Name [webproxy]: " vnetwork 
-vnetwork=${vnetwork:-address@gmail.com}
+vnetwork=${vnetwork:-webproxy}
 
 #Send Values to .env
-  echo "CONTAINER_NAME = $container_name" > .env
-  echo "CODESERVER_DATA_PATH = $data_path" > .env
-  echo "DOMAINS = $domain_name" >> .env
-  echo "MAIN_DOMAIN = $domain_name" >> .env
-  echo "LETSENCRYPT_EMAIL = $mail_address" >> .env
-  echo "CODESERVER_SSL_PATH = $cert_path" >> .env
-  echo "CODESERVER_SSL_CERTIFICATE = $Certificate.crt" >> .env
-  echo "CODESERVER_SSL_KEY = $Certificate.key" >> .env
-  echo "NETWORK = $vnetwork" >> .env
+  echo "CONTAINER_NAME=$container_name" > .env
+  echo "CODESERVER_DATA_PATH=$data_path" > .env
+  echo "DOMAINS=$domain_name" >> .env
+  echo "MAIN_DOMAIN=$domain_name" >> .env
+  echo "LETSENCRYPT_EMAIL=$mail_address" >> .env
+  echo "CODESERVER_SSL_PATH=$cert_path" >> .env
+  echo "CODESERVER_SSL_CERTIFICATE=$Certificate.crt" >> .env
+  echo "CODESERVER_SSL_KEY=$Certificate.key" >> .env
+  echo "NETWORK=$vnetwork" >> .env
 
 # Final message
   echo 
