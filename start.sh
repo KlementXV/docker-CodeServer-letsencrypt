@@ -84,10 +84,17 @@ vnetwork=${vnetwork:-webproxy}
   echo "#-----------------------------------------------------------"
   echo
 
-
-echo ${docker-compose up -d}
+echo "DOCKER COMPOSE UP"
+docker-compose up -d
 
 sleep 10
 
+echo
+echo "Domain"
+echo $domain_name
+echo
+
+#Regler PB recuperation mot de passe
+echo "Password"
 ContainerID=$(docker container ls -l --format "{{.ID}}")
-echo $(docker logs $ContainerID) | cut -f 15 -d ' '
+echo $(docker logs $ContainerID | cut -f 15 -d ' ') 
