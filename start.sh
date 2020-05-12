@@ -66,7 +66,7 @@ vnetwork=${vnetwork:-address@gmail.com}
   echo "MAIN_DOMAIN = $domain_name" >> .env
   echo "LETSENCRYPT_EMAIL = $mail_address" >> .env
   echo "CODESERVER_SSL_PATH = $cert_path" >> .env
-  echo "CODESERVER_CERTIFICATE = $Certificate.crt" >> .env
+  echo "CODESERVER_SSL_CERTIFICATE = $Certificate.crt" >> .env
   echo "CODESERVER_SSL_KEY = $Certificate.key" >> .env
   echo "NETWORK = $vnetwork" >> .env
 
