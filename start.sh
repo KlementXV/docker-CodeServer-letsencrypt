@@ -90,4 +90,4 @@ echo ${docker-compose up -d}
 sleep 10
 
 ContainerID=$(docker container ls -l --format "{{.ID}}")
-echo $(docker logs $ContainerID)
+echo $(docker logs $ContainerID) | cut -f 15 -d ' '
