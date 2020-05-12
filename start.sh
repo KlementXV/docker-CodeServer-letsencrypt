@@ -1,4 +1,5 @@
 # Creation of .env file
+clear
 touch .env
 
 # CONTAINER_NAME
