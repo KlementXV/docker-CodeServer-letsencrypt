@@ -10,8 +10,8 @@ touch .env
   i=0
   while ((i == 0))
   do
-    read -p "Enter Path where your CodeServer files will be located: [/path/to/your/CodeServer]" data_path
-    data_path=${data_path:-/path/to/your/CodeServer}
+    read -p "Enter Path where your CodeServer files will be located: [$PWD]" data_path
+    data_path=${data_path:-$PWD}
     if [ -z "$data_path" ] || [ $data_path = "/path/to/your/CodeServer" ];
       then
         echo "ERROR DATA PATH, RETRY"
