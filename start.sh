@@ -48,6 +48,19 @@ touch .env
     fi
   done
 
+# PASSWORD_VS
+  i=0
+  while ((i == 0))
+  do
+    read -p "Enter Your Password For VS: " Password 
+    if [ -z "$Password" ];
+      then
+        echo "ERROR PASSWORD IS NULL, RETRY"
+      else
+        ((i += 1))
+    fi
+  done
+
 
 # CODESERVER_SSL_PATH
 read -p "Path to the certificates [/home/user/webproxy/data/certs]: " cert_path 
@@ -69,16 +82,17 @@ vnetwork=${vnetwork:-webproxy}
   echo "CODESERVER_SSL_PATH=$cert_path" >> .env
   echo "CODESERVER_SSL_CERTIFICATE=$Certificate.crt" >> .env
   echo "CODESERVER_SSL_KEY=$Certificate.key" >> .env
+  echo "ADMIN_PASSWORD=$Password" >> .env
   echo "NETWORK=$vnetwork" >> .env
 
 # Final message
   echo 
   echo "#-----------------------------------------------------------"
-  echo "# $container_name"
+  echo "# Name : $container_name"
   echo "# ----------------------"
-  echo "# Mail : $mail_address"
+  echo "# Domain : $domain_name"
   echo "# ----------------------"
-  echo "# domain(s): $domain_name"
+  echo "# Password : $Password"
   echo "# ----------------------"
   echo "# Path : $data_path"
   echo "#-----------------------------------------------------------"
@@ -89,12 +103,4 @@ docker-compose up -d
 
 sleep 10
 
-echo
-echo "Domain"
-echo $domain_name
-echo
-
-#Regler PB recuperation mot de passe
-echo "Password"
-ContainerID=$(docker container ls -l --format "{{.ID}}")
-echo $(docker logs $ContainerID | cut -f 15 -d ' ') 
+rm -rf .env

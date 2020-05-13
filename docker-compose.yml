@@ -16,6 +16,7 @@ services:
       VIRTUAL_PORT: 8080
       SSLCERT: ${CODESERVER_SSL_CERTIFICATE}
       SSLKEY: ${CODESERVER_SSL_KEY}
+      PASSWORD: ${ADMIN_PASSWORD}
 
 networks:
     default:
